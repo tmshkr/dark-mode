@@ -14,7 +14,6 @@ export const useDarkMode = () => {
 
   // load initial state from localStorage
   useEffect(() => {
-    console.log("useEffect");
     darkMode
       ? document.body.classList.add("dark-mode")
       : document.body.classList.remove("dark-mode");

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useActiveCoin } from "../hooks/useActiveCoin";
 import Chart from "./Chart";
 
 const Charts = ({ coinData }) => {
-  const [activeCoin, setActiveCoin] = useState(0);
+  const [activeCoin, setActiveCoin] = useActiveCoin();
   const coin = coinData[activeCoin];
-  if (!coin) return <h2>Loading...</h2>;
+  if (!coin) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <div className="charts">
       <div className="chart__container" key={coin.name}>
@@ -16,7 +19,7 @@ const Charts = ({ coinData }) => {
         </div>
         <Chart sparklineData={coin.sparkline_in_7d.price} />
       </div>
-      <select onChange={e => setActiveCoin(e.target.value)}>
+      <select onChange={e => setActiveCoin(e.target.value)} value={activeCoin}>
         {coinData.map((coin, index) => (
           <option key={coin.name} value={index}>
             {coin.name}

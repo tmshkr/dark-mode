@@ -5,7 +5,7 @@ export const useDarkMode = () => {
   const [storedValue, setStoredValue] = useLocalStorage("dark-mode", false);
   const [darkMode, setDarkMode] = useState(storedValue);
 
-  // load initial state from localStorage
+  // set initial class from localStorage
   useEffect(() => {
     darkMode
       ? document.body.classList.add("dark-mode")
